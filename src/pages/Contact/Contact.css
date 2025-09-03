@@ -2,6 +2,12 @@
   padding-top: 89px;
 }
 
+@media (max-width: 768px) {
+  .contact {
+    padding-top: 70px;
+  }
+}
+
 .contact-hero {
   background: linear-gradient(135deg, #000 0%, #333 100%);
   padding: 120px 0;
@@ -256,46 +262,12 @@
   margin-bottom: 40px;
 }
 
-.map-image {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-}
-
-.map-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.95);
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-.location-marker {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-
-.location-info h3 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 5px;
-}
-
-.location-info p {
-  font-size: 16px;
-  color: #666;
-}
-
 .map-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   text-align: center;
+  margin-top: 40px;
 }
 
 .map-info-item strong {

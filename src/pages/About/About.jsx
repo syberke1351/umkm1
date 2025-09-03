@@ -7,8 +7,8 @@ const About = () => {
       {/* Hero Section */}
       <section className="about-hero">
         <div className="about-hero-container">
-          <h1>About Stride</h1>
-          <p>Melangkah Bersama Menuju Masa Depan Fashion</p>
+          <h1>Tentang Stride</h1>
+          <p>Platform Digitalisasi UMKM Terdepan di Indonesia</p>
         </div>
       </section>
 
@@ -20,20 +20,20 @@ const About = () => {
               <div className="card-icon">👁️</div>
               <h2>Visi</h2>
               <p>
-                Menjadi brand sepatu lokal terdepan yang menginspirasi generasi muda Indonesia 
-                untuk tampil percaya diri dengan gaya yang autentik dan berkualitas tinggi, 
-                sambil melestarikan nilai-nilai budaya lokal dalam setiap langkah.
+                Menjadi platform digitalisasi UMKM terdepan di Indonesia yang memberdayakan 
+                usaha kecil dan menengah untuk berkembang di era digital, menciptakan 
+                ekosistem bisnis yang berkelanjutan dan inklusif.
               </p>
             </div>
             <div className="mission-card">
               <div className="card-icon">🎯</div>
               <h2>Misi</h2>
               <ul>
-                <li>Menghadirkan sepatu berkualitas tinggi dengan desain yang inovatif dan trendy</li>
-                <li>Mendukung industri kreatif lokal melalui kolaborasi dengan desainer Indonesia</li>
-                <li>Memberikan pengalaman berbelanja yang memuaskan dengan pelayanan terbaik</li>
-                <li>Menggunakan bahan-bahan ramah lingkungan dalam proses produksi</li>
-                <li>Membangun komunitas pecinta fashion yang saling mendukung dan menginspirasi</li>
+                <li>Menyediakan platform digital yang mudah digunakan untuk UMKM</li>
+                <li>Memberikan pelatihan dan pendampingan digitalisasi bisnis</li>
+                <li>Membangun ekosistem marketplace yang mendukung produk lokal</li>
+                <li>Menciptakan akses pasar yang lebih luas untuk UMKM Indonesia</li>
+                <li>Mengembangkan teknologi yang mendukung pertumbuhan bisnis UMKM</li>
               </ul>
             </div>
           </div>
@@ -43,60 +43,60 @@ const About = () => {
       {/* History Section */}
       <section className="history">
         <div className="history-container">
-          <h2>Sejarah Stride</h2>
+          <h2>Perjalanan Digitalisasi</h2>
           <div className="timeline">
             <div className="timeline-item">
               <div className="timeline-year">2020</div>
               <div className="timeline-content">
-                <h3>Awal Mula</h3>
+                <h3>Ide Digitalisasi</h3>
                 <p>
-                  Stride didirikan oleh sekelompok anak muda Indonesia yang memiliki passion 
-                  terhadap fashion dan kualitas. Dimulai dari sebuah garasi kecil di Bogor, 
-                  dengan visi untuk menciptakan sepatu lokal yang tidak kalah dengan brand internasional.
+                  Melihat tantangan UMKM di era digital, kami memulai inisiatif untuk 
+                  membantu usaha kecil beradaptasi dengan teknologi. Dimulai dengan 
+                  membantu 10 UMKM lokal di Bogor.
                 </p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">2021</div>
               <div className="timeline-content">
-                <h3>Ekspansi Pertama</h3>
+                <h3>Platform Digital</h3>
                 <p>
-                  Membuka toko fisik pertama di Jakarta dan meluncurkan platform online. 
-                  Koleksi pertama "Urban Explorer" mendapat sambutan luar biasa dari 
-                  konsumen muda Indonesia.
+                  Meluncurkan platform digital pertama untuk UMKM dengan fitur katalog 
+                  produk, manajemen inventori, dan sistem pemesanan terintegrasi WhatsApp. 
+                  50+ UMKM bergabung dalam 6 bulan pertama.
                 </p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">2022</div>
               <div className="timeline-content">
-                <h3>Inovasi Berkelanjutan</h3>
+                <h3>Ekspansi & Pelatihan</h3>
                 <p>
-                  Memperkenalkan teknologi "EcoComfort" - sol sepatu yang terbuat dari 
-                  bahan daur ulang. Berkolaborasi dengan 50+ UMKM lokal untuk mendukung 
-                  ekonomi kreatif Indonesia.
+                  Mengembangkan program pelatihan digital marketing dan e-commerce untuk UMKM. 
+                  Berkolaborasi dengan 200+ UMKM di Jabodetabek dan mulai ekspansi ke 
+                  kota-kota besar lainnya.
                 </p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">2023</div>
               <div className="timeline-content">
-                <h3>Pengakuan Nasional</h3>
+                <h3>Pengakuan & Penghargaan</h3>
                 <p>
-                  Meraih penghargaan "Best Local Brand" dari Indonesia Fashion Week. 
-                  Membuka 15 cabang di seluruh Indonesia dan melayani lebih dari 
-                  100,000 pelanggan setia.
+                  Meraih penghargaan "Best Digital Platform for SMEs" dari Kementerian 
+                  Koperasi dan UKM. Berhasil membantu 500+ UMKM meningkatkan penjualan 
+                  hingga 300% melalui digitalisasi.
                 </p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">2024</div>
               <div className="timeline-content">
-                <h3>Era Digital</h3>
+                <h3>Inovasi AI & Analytics</h3>
                 <p>
-                  Meluncurkan platform digital terbaru dengan teknologi AR untuk virtual 
-                  try-on. Memulai ekspansi ke pasar Asia Tenggara dengan tetap mempertahankan 
-                  identitas Indonesia.
+                  Mengintegrasikan AI untuk analisis pasar dan rekomendasi bisnis. 
+                  Meluncurkan fitur analytics dashboard untuk membantu UMKM memahami 
+                  performa bisnis dan tren pasar.
                 </p>
               </div>
             </div>
@@ -107,27 +107,27 @@ const About = () => {
       {/* Values Section */}
       <section className="values">
         <div className="values-container">
-          <h2>Nilai-Nilai Kami</h2>
+          <h2>Komitmen Kami</h2>
           <div className="values-grid">
             <div className="value-card">
-              <div className="value-icon">🌱</div>
-              <h3>Sustainability</h3>
-              <p>Berkomitmen pada praktik ramah lingkungan dalam setiap aspek produksi</p>
+              <div className="value-icon">🚀</div>
+              <h3>Pemberdayaan</h3>
+              <p>Memberdayakan UMKM dengan teknologi digital yang mudah digunakan dan terjangkau</p>
             </div>
             <div className="value-card">
               <div className="value-icon">🤝</div>
-              <h3>Community</h3>
-              <p>Membangun komunitas yang kuat dan saling mendukung sesama pecinta fashion</p>
+              <h3>Kolaborasi</h3>
+              <p>Membangun ekosistem yang saling mendukung antara UMKM, konsumen, dan mitra</p>
             </div>
             <div className="value-card">
               <div className="value-icon">⚡</div>
-              <h3>Innovation</h3>
-              <p>Terus berinovasi dalam desain dan teknologi untuk memberikan yang terbaik</p>
+              <h3>Inovasi</h3>
+              <p>Menghadirkan solusi teknologi terdepan yang sesuai dengan kebutuhan UMKM</p>
             </div>
             <div className="value-card">
-              <div className="value-icon">🏆</div>
-              <h3>Quality</h3>
-              <p>Tidak pernah berkompromi dengan kualitas dalam setiap produk yang kami hasilkan</p>
+              <div className="value-icon">🌱</div>
+              <h3>Berkelanjutan</h3>
+              <p>Mendukung pertumbuhan ekonomi lokal yang berkelanjutan dan inklusif</p>
             </div>
           </div>
         </div>
@@ -136,25 +136,25 @@ const About = () => {
       {/* Team Section */}
       <section className="team">
         <div className="team-container">
-          <h2>Tim Kami</h2>
+          <h2>Tim Digitalisasi</h2>
           <div className="team-grid">
             <div className="team-member">
               <img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="CEO" />
               <h3>Ahmad Rizki</h3>
-              <p>Founder & CEO</p>
-              <span>Visioner di balik Stride dengan pengalaman 10+ tahun di industri fashion</span>
+              <p>Chief Digital Officer</p>
+              <span>Ahli digitalisasi UMKM dengan pengalaman 10+ tahun di bidang teknologi</span>
             </div>
             <div className="team-member">
               <img src="https://images.pexels.com/photos/2182969/pexels-photo-2182969.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Designer" />
               <h3>Sari Indah</h3>
-              <p>Head of Design</p>
-              <span>Desainer berbakat yang menciptakan koleksi-koleksi ikonik Stride</span>
+              <p>Head of UMKM Relations</p>
+              <span>Spesialis pemberdayaan UMKM dan pengembangan komunitas bisnis</span>
             </div>
             <div className="team-member">
               <img src="https://images.pexels.com/photos/2182968/pexels-photo-2182968.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Production" />
               <h3>Budi Santoso</h3>
-              <p>Head of Production</p>
-              <span>Ahli produksi yang memastikan setiap sepatu dibuat dengan standar tertinggi</span>
+              <p>Head of Technology</p>
+              <span>Teknolog berpengalaman yang mengembangkan solusi digital untuk UMKM</span>
             </div>
           </div>
         </div>

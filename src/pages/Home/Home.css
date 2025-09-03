@@ -2,6 +2,12 @@
   padding-top: 89px;
 }
 
+@media (max-width: 768px) {
+  .home {
+    padding-top: 70px;
+  }
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
@@ -91,50 +97,49 @@
 .hero-image {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   animation: fadeInRight 1s ease;
 }
 
 .hero-circle {
-  width: 654px;
-  height: 654px;
+  width: 400px;
+  height: 400px;
   background: #000;
-  border-radius: 50%;
+  border-radius: 50% 0 50% 50%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 50px;
 }
 
 .hero-local {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 200px;
+  font-size: 80px;
   font-family: 'Karantina', sans-serif;
-  transform: rotate(-90deg);
+  transform: rotate(-45deg);
   font-weight: 400;
 }
 
 .hero-shoe {
-  position: absolute;
-  width: 500px;
+  width: 350px;
   height: auto;
-  z-index: 2;
+  position: relative;
   animation: float 3s ease-in-out infinite;
 }
 
 .hero-mini-products {
-  position: absolute;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  margin-top: 30px;
   display: flex;
   gap: 20px;
+  justify-content: center;
 }
 
 .mini-product {
-  width: 133px;
-  height: 100px;
+  width: 80px;
+  height: 60px;
   background: #cbed62;
   border-radius: 10px;
   overflow: hidden;
@@ -149,6 +154,52 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* UMKM Stats Section */
+.umkm-stats {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #000 0%, #333 100%);
+  color: white;
+}
+
+.stats-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.umkm-stats h2 {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 60px;
+  font-family: 'Inter', sans-serif;
+}
+
+.umkm-stats .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+.stat-item {
+  text-align: center;
+  animation: fadeInUp 1s ease;
+}
+
+.stat-number {
+  font-size: 64px;
+  font-weight: 700;
+  color: #c0ff00;
+  margin-bottom: 10px;
+  font-family: 'Inter', sans-serif;
+}
+
+.stat-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
 }
 
 /* Brands Section */
@@ -908,16 +959,18 @@
   }
 
   .hero-circle {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 
   .hero-local {
-    font-size: 120px;
+    font-size: 60px;
   }
 
   .hero-shoe {
-    width: 300px;
+    width: 250px;
   }
 
   .showcase-container {
@@ -941,16 +994,64 @@
 }
 
 @media (max-width: 768px) {
-  .hero-title {
+  .umkm-stats {
+    padding: 60px 0;
+  }
+
+  .umkm-stats h2 {
     font-size: 36px;
   }
 
+  .stat-number {
+    font-size: 48px;
+  }
+
+  .stat-label {
+    font-size: 16px;
+  }
+
+  .hero {
+    padding: 40px 0;
+  }
+
+  .hero-content {
+    gap: 30px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
   .hero-subtitle {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-button {
+    padding: 15px 30px;
     font-size: 16px;
+  }
+
+  .hero-circle {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero-local {
+    font-size: 45px;
+  }
+
+  .hero-shoe {
+    width: 200px;
+  }
+
+  .mini-product {
+    width: 60px;
+    height: 45px;
   }
 
   .brands h2 {
@@ -998,5 +1099,29 @@
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+
+  .advantages-content h3 {
+    font-size: 36px;
+  }
+
+  .contact-card {
+    padding: 40px 20px;
+  }
+
+  .contact-card h2 {
+    font-size: 36px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
   }
 }

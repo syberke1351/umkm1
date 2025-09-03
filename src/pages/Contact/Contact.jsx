@@ -184,20 +184,16 @@ ${formData.message}`;
       <section className="map-section">
         <div className="map-container">
           <h2>Lokasi Toko</h2>
-          <div className="map-wrapper">
-            <img 
-              src="https://images.pexels.com/photos/1098460/pexels-photo-1098460.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop" 
-              alt="Peta Lokasi Stride" 
-              className="map-image"
-            />
-            <div className="map-overlay">
-              <div className="location-marker">📍</div>
-              <div className="location-info">
-                <h3>Stride Store</h3>
-                <p>Jl. Raya Cikampak Cicadas</p>
-              </div>
-            </div>
-          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.2!2d106.7!3d-6.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzYnMDAuMCJTIDEwNsKwNDInMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890"
+            width="100%"
+            height="500"
+            style={{ border: 0, borderRadius: '20px' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Lokasi Stride Store"
+          ></iframe>
           <div className="map-info">
             <div className="map-info-item">
               <strong>Jam Operasional:</strong>

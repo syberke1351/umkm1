@@ -2,11 +2,38 @@
   padding-top: 89px;
 }
 
+@media (max-width: 768px) {
+  .about {
+    padding-top: 70px;
+  }
+}
+
 .about-hero {
-  background: linear-gradient(135deg, #c0ff00 0%, #a8d600 100%);
+  background: linear-gradient(135deg, #000 0%, #333 50%, #c0ff00 100%);
   padding: 120px 0;
   text-align: center;
-  color: #000;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1440&h=800&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.about-hero-container {
+  position: relative;
+  z-index: 2;
 }
 
 .about-hero-container {
@@ -31,7 +58,7 @@
 
 .vision-mission {
   padding: 100px 0;
-  background: #fff;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .vision-mission-container {
@@ -48,29 +75,44 @@
 
 .vision-card,
 .mission-card {
-  background: #f8f9fa;
+  background: white;
   border-radius: 20px;
   padding: 50px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   animation: slideInUp 1s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.vision-card::before,
+.mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c0ff00, #a8d600);
 }
 
 .vision-card:hover,
 .mission-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
 .card-icon {
-  font-size: 60px;
+  font-size: 80px;
   margin-bottom: 30px;
   display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .vision-card h2,
 .mission-card h2 {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 600;
   color: #000;
   margin-bottom: 30px;
@@ -78,7 +120,7 @@
 }
 
 .vision-card p {
-  font-size: 18px;
+  font-size: 16px;
   color: #505050;
   line-height: 1.6;
 }
@@ -90,12 +132,17 @@
 }
 
 .mission-card li {
-  font-size: 18px;
+  font-size: 16px;
   color: #505050;
   line-height: 1.6;
   margin-bottom: 15px;
   padding-left: 30px;
   position: relative;
+  transition: color 0.3s ease;
+}
+
+.mission-card li:hover {
+  color: #000;
 }
 
 .mission-card li::before {
@@ -105,11 +152,32 @@
   color: #c0ff00;
   font-weight: bold;
   font-size: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .history {
   padding: 100px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: white;
+  position: relative;
+}
+
+.history::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://images.pexels.com/photos/1464624/pexels-photo-1464624.jpeg?auto=compress&cs=tinysrgb&w=1440&h=800&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.03;
+  z-index: 1;
+}
+
+.history-container {
+  position: relative;
+  z-index: 2;
 }
 
 .history-container {
@@ -174,13 +242,16 @@
   border-radius: 20px;
   padding: 40px;
   margin: 0 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
   flex: 1;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
 }
 
 .timeline-content:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  border-left-color: #c0ff00;
 }
 
 .timeline-content h3 {
@@ -199,7 +270,7 @@
 
 .values {
   padding: 100px 0;
-  background: #fff;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .values-container {
@@ -224,24 +295,48 @@
 }
 
 .value-card {
-  background: #f8f9fa;
+  background: white;
   border-radius: 20px;
   padding: 40px;
   text-align: center;
   transition: all 0.3s ease;
   animation: slideInUp 1s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c0ff00, #a8d600);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover::before {
+  transform: scaleX(1);
 }
 
 .value-card:hover {
   transform: translateY(-10px);
-  background: #c0ff00;
-  color: #000;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
 .value-icon {
-  font-size: 60px;
+  font-size: 70px;
   margin-bottom: 20px;
   display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+  transform: scale(1.1);
 }
 
 .value-card h3 {
@@ -256,15 +351,16 @@
   font-size: 16px;
   color: #505050;
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
 .value-card:hover p {
-  color: #000;
+  color: #333;
 }
 
 .team {
   padding: 100px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: white;
 }
 
 .team-container {
@@ -293,13 +389,32 @@
   border-radius: 20px;
   padding: 40px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   animation: slideInUp 1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-member::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c0ff00, #a8d600);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover::before {
+  transform: scaleX(1);
 }
 
 .team-member:hover {
-  transform: translateY(-10px);
+  transform: translateY(-15px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
 }
 
 .team-member img {
@@ -308,7 +423,12 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
-  border: 4px solid #c0ff00;
+  border: 5px solid #c0ff00;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover img {
+  transform: scale(1.05);
 }
 
 .team-member h3 {
@@ -403,7 +523,15 @@
 
   .vision-card h2,
   .mission-card h2 {
-    font-size: 36px;
+    font-size: 28px;
+  }
+
+  .card-icon {
+    font-size: 60px;
+  }
+
+  .value-icon {
+    font-size: 50px;
   }
 
   .timeline-content {
@@ -413,5 +541,14 @@
   .team-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .team-member {
+    padding: 30px;
+  }
+
+  .team-member img {
+    width: 120px;
+    height: 120px;
   }
 }

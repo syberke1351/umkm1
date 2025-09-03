@@ -6,6 +6,12 @@ import './Home.css';
 const Home = () => {
   const { products } = useProducts();
   const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [umkmStats, setUmkmStats] = useState({
+    totalUMKM: 150,
+    digitalizedUMKM: 89,
+    totalProducts: 1200,
+    successStories: 45
+  });
 
   useEffect(() => {
     // Get first 6 products for featured section
@@ -69,22 +75,22 @@ const Home = () => {
         <div className="hero-container">
           <div className="hero-content">
             <div className="hero-text">
-              <span className="hero-subtitle">FEEL THE EXPERIENCE</span>
+              <span className="hero-subtitle">DIGITALISASI UMKM</span>
               <h1 className="hero-title">
-                SEPATU BERBICARA<br />
-                LEBIH KERAS<br />
-                DARIPADA KATA-KATA
+                WUJUDKAN IMPIAN<br />
+                UMKM DIGITAL<br />
+                BERSAMA STRIDE
               </h1>
               <p className="hero-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
-                luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Platform digital terpercaya untuk membantu UMKM Indonesia go-digital. 
+                Dari katalog produk hingga manajemen pelanggan, semua dalam satu platform.
               </p>
               <Link to="/products" className="hero-button">
-                Temukan Sekarang
+                Mulai Digitalisasi
               </Link>
               <div className="hero-rating">
                 <span className="star">★</span>
-                <span>4.5 Rating</span>
+                <span>4.8 Rating • 500+ UMKM</span>
               </div>
             </div>
             <div className="hero-image">
@@ -112,11 +118,36 @@ const Home = () => {
         </div>
       </section>
 
+      {/* UMKM Stats Section */}
+      <section className="umkm-stats">
+        <div className="stats-container">
+          <h2>Dampak Digitalisasi UMKM</h2>
+          <div className="stats-grid">
+            <div className="stat-item">
+              <div className="stat-number">{umkmStats.totalUMKM}+</div>
+              <div className="stat-label">UMKM Terdaftar</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">{umkmStats.digitalizedUMKM}%</div>
+              <div className="stat-label">Berhasil Go-Digital</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">{umkmStats.totalProducts}+</div>
+              <div className="stat-label">Produk Terjual</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">{umkmStats.successStories}+</div>
+              <div className="stat-label">Kisah Sukses</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Top Brands Section */}
       <section className="brands">
         <div className="brands-container">
-          <h2>Top Brands</h2>
-          <p>temukan sepatu impian Anda dari 5000+ koleksi</p>
+          <h2>Partner UMKM</h2>
+          <p>Bergabung dengan 500+ UMKM yang telah sukses go-digital</p>
           <div className="brands-grid">
             {brandLogos.map((logo, index) => (
               <div key={index} className="brand-logo">

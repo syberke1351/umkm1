@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useProducts } from '../../hooks/useProducts';
+import UMKMProfile from '../../components/UMKMProfile/UMKMProfile';
 import './Dashboard.css';
 
 const UserDashboard = () => {
@@ -8,14 +9,25 @@ const UserDashboard = () => {
   const { products } = useProducts();
   const [favorites, setFavorites] = useState([]);
   const [orderHistory, setOrderHistory] = useState([]);
+  const [activeTab, setActiveTab] = useState('overview');
+  const [umkmProfile, setUmkmProfile] = useState(null);
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
 
   useEffect(() => {
     // Load user favorites and order history from localStorage
     const savedFavorites = JSON.parse(localStorage.getItem(`favorites_${currentUser?.uid}`) || '[]');
     const savedOrders = JSON.parse(localStorage.getItem(`orders_${currentUser?.uid}`) || '[]');
+    const savedProfile = JSON.parse(localStorage.getItem(`umkm_profile_${currentUser?.uid}`) || 'null');
     setFavorites(savedFavorites);
     setOrderHistory(savedOrders);
+    setUmkmProfile(savedProfile);
   }, [currentUser]);
+
+  const handleSaveProfile = (profileData) => {
+    setUmkmProfile(profileData);
+    localStorage.setItem(`umkm_profile_${currentUser.uid}`, JSON.stringify(profileData));
+    setIsEditingProfile(false);
+  };
 
   const toggleFavorite = (productId) => {
     const newFavorites = favorites.includes(productId)
@@ -58,22 +70,41 @@ const UserDashboard = () => {
           </div>
           
           <nav className="sidebar-nav">
-            <a href="#overview" className="nav-item active">
+            <button 
+              className={`nav-item ${activeTab === 'overview' ? 'active' : ''}`}
+              onClick={() => setActiveTab('overview')}
+            >
               <span className="nav-icon">📊</span>
               Overview
-            </a>
-            <a href="#favorites" className="nav-item">
+            </button>
+            <button 
+              className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`}
+              onClick={() => setActiveTab('profile')}
+            >
+              <span className="nav-icon">🏢</span>
+              Profil UMKM
+            </button>
+            <button 
+              className={`nav-item ${activeTab === 'favorites' ? 'active' : ''}`}
+              onClick={() => setActiveTab('favorites')}
+            >
               <span className="nav-icon">❤️</span>
               Favorit Saya
-            </a>
-            <a href="#orders" className="nav-item">
+            </button>
+            <button 
+              className={`nav-item ${activeTab === 'orders' ? 'active' : ''}`}
+              onClick={() => setActiveTab('orders')}
+            >
               <span className="nav-icon">📦</span>
               Riwayat Pesanan
-            </a>
-            <a href="#profile" className="nav-item">
+            </button>
+            <button 
+              className={`nav-item ${activeTab === 'account' ? 'active' : ''}`}
+              onClick={() => setActiveTab('account')}
+            >
               <span className="nav-icon">👤</span>
-              Profil
-            </a>
+              Akun Saya
+            </button>
           </nav>
 
           <button onClick={logout} className="logout-btn">
@@ -84,7 +115,8 @@ const UserDashboard = () => {
         {/* Main Content */}
         <main className="dashboard-main">
           {/* Overview Section */}
-          <section id="overview" className="dashboard-section">
+          {activeTab === 'overview' && (
+          <section className="dashboard-section">
             <h2>Overview</h2>
             <div className="stats-grid">
               <div className="stat-card">
@@ -110,9 +142,24 @@ const UserDashboard = () => {
               </div>
             </div>
           </section>
+          )}
+
+          {/* UMKM Profile Section */}
+          {activeTab === 'profile' && (
+          <section className="dashboard-section">
+            <h2>Profil UMKM</h2>
+            <UMKMProfile
+              umkm={umkmProfile}
+              onEdit={setIsEditingProfile}
+              onSave={handleSaveProfile}
+              isEditing={isEditingProfile}
+            />
+          </section>
+          )}
 
           {/* Favorites Section */}
-          <section id="favorites" className="dashboard-section">
+          {activeTab === 'favorites' && (
+          <section className="dashboard-section">
             <h2>Produk Favorit</h2>
             {favoriteProducts.length === 0 ? (
               <div className="empty-state">
@@ -150,9 +197,11 @@ const UserDashboard = () => {
               </div>
             )}
           </section>
+          )}
 
           {/* Orders Section */}
-          <section id="orders" className="dashboard-section">
+          {activeTab === 'orders' && (
+          <section className="dashboard-section">
             <h2>Riwayat Inquiry</h2>
             {orderHistory.length === 0 ? (
               <div className="empty-state">
@@ -182,10 +231,12 @@ const UserDashboard = () => {
               </div>
             )}
           </section>
+          )}
 
           {/* Profile Section */}
-          <section id="profile" className="dashboard-section">
-            <h2>Profil Saya</h2>
+          {activeTab === 'account' && (
+          <section className="dashboard-section">
+            <h2>Akun Saya</h2>
             <div className="profile-card">
               <div className="profile-avatar">
                 <img 
@@ -203,6 +254,7 @@ const UserDashboard = () => {
               </div>
             </div>
           </section>
+          )}
         </main>
       </div>
     </div>

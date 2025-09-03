@@ -4,6 +4,12 @@
   background: #f8f9fa;
 }
 
+@media (max-width: 768px) {
+  .dashboard {
+    padding-top: 70px;
+  }
+}
+
 .dashboard-container {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -643,9 +649,9 @@
 
   .dashboard-sidebar {
     position: fixed;
-    top: 89px;
+    top: 70px;
     left: -280px;
-    height: calc(100vh - 89px);
+    height: calc(100vh - 70px);
     z-index: 100;
     transition: left 0.3s ease;
   }

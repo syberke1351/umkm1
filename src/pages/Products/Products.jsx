@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProducts } from '../../hooks/useProducts';
+import ProductDetail from '../../components/ProductDetail/ProductDetail';
 import './Products.css';
 
 const Products = () => {
@@ -8,6 +9,7 @@ const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [priceRange, setPriceRange] = useState('all');
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     let filtered = products;
@@ -27,7 +29,6 @@ const Products = () => {
 
     // Filter by price range
     if (priceRange !== 'all') {
-      const price = parseFloat(product.price?.replace(/[^\d]/g, '') || 0);
       switch (priceRange) {
         case 'under-500':
           filtered = filtered.filter(product => {
@@ -41,22 +42,27 @@ const Products = () => {
             return productPrice >= 500000 && productPrice <= 1000000;
           });
           break;
-        case 'over-1000':
-          filtered = filtered.filter(product => {
-            const productPrice = parseFloat(product.price?.replace(/[^\d]/g, '') || 0);
+📦 *${orderDetails.name || 'Sepatu Stride'}*
+💰 Harga: ${orderDetails.price || 'Rp 500.000'}
+📂 Kategori: ${orderDetails.category || 'Casual'}
+${orderDetails.selectedColor ? `🎨 Warna: ${orderDetails.selectedColor}` : ''}
+${orderDetails.selectedSize ? `📏 Ukuran: ${orderDetails.selectedSize}` : ''}
+${orderDetails.quantity ? `📦 Jumlah: ${orderDetails.quantity}` : ''}
             return productPrice > 1000000;
           });
           break;
       }
     }
 
-    setFilteredProducts(filtered);
-  }, [products, searchTerm, selectedCategory, priceRange]);
-
-  const handleWhatsAppOrder = (product) => {
-    const message = `Halo, saya tertarik dengan produk ${product.name || 'Sepatu Stride'}. Bisa tolong berikan informasi lebih lanjut?`;
+    const orderDetails = selectedProduct || product;
+    const message = `Halo Stride! 👋
     const whatsappUrl = `https://wa.me/6289506147763?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+    setSelectedProduct(null);
+  };
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
   };
 
   const categories = ['all', 'running', 'casual', 'formal', 'sport'];
@@ -150,7 +156,7 @@ const Products = () => {
                     <div className="product-overlay">
                       <button 
                         className="quick-view-btn"
-                        onClick={() => handleWhatsAppOrder(product)}
+                        onClick={() => handleProductClick(product)}
                       >
                         Lihat Detail
                       </button>
@@ -201,6 +207,15 @@ const Products = () => {
           </button>
         </div>
       </section>
+
+      {/* Product Detail Modal */}
+      {selectedProduct && (
+        <ProductDetail
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onOrder={handleWhatsAppOrder}
+        />
+      )}
     </div>
   );
 };
