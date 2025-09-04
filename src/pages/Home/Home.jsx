@@ -102,7 +102,9 @@ const Home = () => {
                 alt="Stride Shoes" 
                 className="hero-shoe"
               />
-              <div className="hero-mini-products">
+             
+            </div>
+             <div className="hero-mini-products">
                 <div className="mini-product">
                   <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=115&h=96&fit=crop" alt="Product 1" />
                 </div>
@@ -113,7 +115,6 @@ const Home = () => {
                   <img src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&w=127&h=116&fit=crop" alt="Product 3" />
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </section>
@@ -259,14 +260,38 @@ const Home = () => {
           <h2>Local Collection</h2>
           <div className="products-grid">
             {featuredProducts.map((product, index) => (
-              <div key={index} className="product-card">
-                <div className="product-image">
-                  <img src={product.image || `https://images.pexels.com/photos/${1598505 + index}/pexels-photo-${1598505 + index}.jpeg?auto=compress&cs=tinysrgb&w=339&h=236&fit=crop`} alt={product.name} />
-                </div>
-                <h3>{product.name || `Product ${index + 1}`}</h3>
-                <p>Color: {product.color || 'White'} | {product.price || 'Rp 500rb/-'}</p>
-                <button className="favorite-btn">♡</button>
-              </div>
+                  <div key={product.id || index} className="product-card">
+  <div className="product-image">
+    <img 
+      src={product.image || `https://images.pexels.com/photos/${1598505 + index}/pexels-photo-${1598505 + index}.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop`} 
+      alt={product.name || `Product ${index + 1}`} 
+    />
+    <div className="product-overlay">
+      <button 
+        className="quick-view-btn"
+        onClick={() => handleProductClick(product)}
+      >
+        Lihat Detail
+      </button>
+    </div>
+  </div>
+
+  <div className="product-info">
+    <h3 className="product-name">{product.name || `Stride Product ${index + 1}`}</h3>
+   
+
+    <div className="product-footer">
+      <span className="product-price">{product.price || 'Rp 500.000'}</span>
+   
+    </div>
+       <button 
+        className="order-btn"
+        onClick={() => handleWhatsAppOrder(product)}
+      >
+        Pesan via WhatsApp
+      </button>
+  </div>
+</div>
             ))}
           </div>
           <Link to="/products" className="view-more-btn">
@@ -279,11 +304,6 @@ const Home = () => {
       <section className="testimonials">
         <div className="testimonials-container">
           <h2>Customer Opinion</h2>
-          <p>
-            At Stride we take pride in offering the finest footwear crafted 
-            with precision and dedication. Step into unmatched comfort, 
-            durability, and style.
-          </p>
           <div className="testimonials-grid">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="testimonial-card">
@@ -336,7 +356,16 @@ const Home = () => {
             </div>
           </div>
           <div className="contact-map">
-            <img src="https://images.pexels.com/photos/1098460/pexels-photo-1098460.jpeg?auto=compress&cs=tinysrgb&w=1014&h=737&fit=crop" alt="Map" />
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.2!2d106.7!3d-6.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzYnMDAuMCJTIDEwNsKwNDInMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890"
+            width="100%"
+            height="500"
+            style={{ border: 0, borderRadius: '20px' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Lokasi Stride Store"
+          ></iframe>
           </div>
         </div>
       </section>

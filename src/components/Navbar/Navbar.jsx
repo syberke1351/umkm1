@@ -32,7 +32,7 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Stride Logo" />
+          <img src="https://res.cloudinary.com/dkzklcr1a/image/upload/v1756973096/Untitled_design_3_j9f3tv.png" alt="Stride Logo" />
           <span>Stride</span>
         </Link>
 

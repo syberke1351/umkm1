@@ -140,21 +140,15 @@ const About = () => {
           <div className="team-grid">
             <div className="team-member">
               <img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="CEO" />
-              <h3>Ahmad Rizki</h3>
-              <p>Chief Digital Officer</p>
+              <h3>Qiageng Berke Jaisyurrohman</h3>
+              <p>Lead Developer</p>
               <span>Ahli digitalisasi UMKM dengan pengalaman 10+ tahun di bidang teknologi</span>
             </div>
             <div className="team-member">
               <img src="https://images.pexels.com/photos/2182969/pexels-photo-2182969.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Designer" />
-              <h3>Sari Indah</h3>
+              <h3>Akram Mujjaman Raton</h3>
               <p>Head of UMKM Relations</p>
               <span>Spesialis pemberdayaan UMKM dan pengembangan komunitas bisnis</span>
-            </div>
-            <div className="team-member">
-              <img src="https://images.pexels.com/photos/2182968/pexels-photo-2182968.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Production" />
-              <h3>Budi Santoso</h3>
-              <p>Head of Technology</p>
-              <span>Teknolog berpengalaman yang mengembangkan solusi digital untuk UMKM</span>
             </div>
           </div>
         </div>
