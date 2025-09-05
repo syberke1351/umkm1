@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useProducts } from '../../hooks/useProducts';
-import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { uploadToCloudinary } from '../../services/cloudinary';
 import ProductForm from '../../components/ProductForm/ProductForm';
@@ -14,6 +14,33 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [showProductForm, setShowProductForm] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
+  const [websiteContent, setWebsiteContent] = useState({
+    companyProfile: {
+      name: 'Stride',
+      tagline: 'Platform Digitalisasi UMKM Terdepan',
+      description: 'Memberdayakan UMKM Indonesia untuk go-digital dengan solusi teknologi terpadu',
+      vision: 'Menjadi platform digitalisasi UMKM terdepan di Indonesia',
+      mission: [
+        'Menyediakan platform digital yang mudah digunakan untuk UMKM',
+        'Memberikan pelatihan dan pendampingan digitalisasi bisnis',
+        'Membangun ekosistem marketplace yang mendukung produk lokal'
+      ]
+    },
+    advantages: [
+      {
+        title: 'Platform Terintegrasi',
+        description: 'Semua kebutuhan digitalisasi UMKM dalam satu platform yang mudah digunakan'
+      },
+      {
+        title: 'Dukungan Penuh',
+        description: 'Tim ahli siap membantu proses transformasi digital bisnis Anda'
+      },
+      {
+        title: 'Teknologi Terdepan',
+        description: 'Menggunakan teknologi cloud terbaru untuk performa optimal'
+      }
+    ]
+  });
   const [stats, setStats] = useState({
     totalProducts: 0,
     totalUsers: 0,
@@ -22,6 +49,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     fetchUsers();
+    fetchWebsiteContent();
     updateStats();
   }, [products]);
 
@@ -38,11 +66,33 @@ const AdminDashboard = () => {
     }
   };
 
+  const fetchWebsiteContent = async () => {
+    try {
+      const docRef = doc(db, 'website', 'content');
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setWebsiteContent(docSnap.data());
+      }
+    } catch (error) {
+      console.error('Error fetching website content:', error);
+    }
+  };
+
+  const updateWebsiteContent = async () => {
+    try {
+      await setDoc(doc(db, 'website', 'content'), websiteContent);
+      alert('Konten website berhasil diperbarui!');
+    } catch (error) {
+      console.error('Error updating website content:', error);
+      alert('Gagal memperbarui konten website');
+    }
+  };
+
   const updateStats = () => {
     setStats({
       totalProducts: products.length,
       totalUsers: users.length,
-      totalOrders: 0 // This would come from orders collection
+      totalOrders: 0
     });
   };
 
@@ -86,6 +136,39 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleContentChange = (section, field, value) => {
+    setWebsiteContent(prev => ({
+      ...prev,
+      [section]: {
+        ...prev[section],
+        [field]: value
+      }
+    }));
+  };
+
+  const handleAdvantageChange = (index, field, value) => {
+    const newAdvantages = [...websiteContent.advantages];
+    newAdvantages[index] = { ...newAdvantages[index], [field]: value };
+    setWebsiteContent(prev => ({
+      ...prev,
+      advantages: newAdvantages
+    }));
+  };
+
+  const addAdvantage = () => {
+    setWebsiteContent(prev => ({
+      ...prev,
+      advantages: [...prev.advantages, { title: '', description: '' }]
+    }));
+  };
+
+  const removeAdvantage = (index) => {
+    setWebsiteContent(prev => ({
+      ...prev,
+      advantages: prev.advantages.filter((_, i) => i !== index)
+    }));
+  };
+
   return (
     <div className="dashboard admin-dashboard">
       <div className="dashboard-container">
@@ -112,18 +195,18 @@ const AdminDashboard = () => {
               Kelola Produk
             </button>
             <button 
+              className={`nav-item ${activeTab === 'content' ? 'active' : ''}`}
+              onClick={() => setActiveTab('content')}
+            >
+              <span className="nav-icon">📝</span>
+              Kelola Konten
+            </button>
+            <button 
               className={`nav-item ${activeTab === 'users' ? 'active' : ''}`}
               onClick={() => setActiveTab('users')}
             >
               <span className="nav-icon">👥</span>
               Kelola User
-            </button>
-            <button 
-              className={`nav-item ${activeTab === 'orders' ? 'active' : ''}`}
-              onClick={() => setActiveTab('orders')}
-            >
-              <span className="nav-icon">📦</span>
-              Pesanan
             </button>
           </nav>
 
@@ -154,10 +237,17 @@ const AdminDashboard = () => {
                   </div>
                 </div>
                 <div className="stat-card">
-                  <div className="stat-icon">📦</div>
+                  <div className="stat-icon">🏢</div>
                   <div className="stat-info">
-                    <h3>{stats.totalOrders}</h3>
-                    <p>Total Inquiry</p>
+                    <h3>150+</h3>
+                    <p>UMKM Terdaftar</p>
+                  </div>
+                </div>
+                <div className="stat-card">
+                  <div className="stat-icon">📈</div>
+                  <div className="stat-info">
+                    <h3>89%</h3>
+                    <p>Tingkat Digitalisasi</p>
                   </div>
                 </div>
               </div>
@@ -175,7 +265,7 @@ const AdminDashboard = () => {
                   <div className="activity-item">
                     <span className="activity-icon">👤</span>
                     <div className="activity-content">
-                      <p>User baru mendaftar</p>
+                      <p>UMKM baru mendaftar</p>
                       <span>5 jam yang lalu</span>
                     </div>
                   </div>
@@ -223,6 +313,7 @@ const AdminDashboard = () => {
                         <h3>{product.name}</h3>
                         <p className="product-category">{product.category}</p>
                         <p className="product-price">{product.price}</p>
+                        <p className="product-stock">Stok: {product.stock}</p>
                       </div>
                       <div className="product-actions">
                         <button 
@@ -242,6 +333,95 @@ const AdminDashboard = () => {
                   ))}
                 </div>
               )}
+            </section>
+          )}
+
+          {/* Content Management Tab */}
+          {activeTab === 'content' && (
+            <section className="dashboard-section">
+              <div className="section-header">
+                <h2>Kelola Konten Website</h2>
+                <button className="save-btn" onClick={updateWebsiteContent}>
+                  💾 Simpan Perubahan
+                </button>
+              </div>
+
+              <div className="content-management">
+                <div className="content-section">
+                  <h3>Profil Perusahaan</h3>
+                  <div className="form-grid">
+                    <div className="form-group">
+                      <label>Nama Perusahaan</label>
+                      <input
+                        type="text"
+                        value={websiteContent.companyProfile.name}
+                        onChange={(e) => handleContentChange('companyProfile', 'name', e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Tagline</label>
+                      <input
+                        type="text"
+                        value={websiteContent.companyProfile.tagline}
+                        onChange={(e) => handleContentChange('companyProfile', 'tagline', e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label>Deskripsi</label>
+                    <textarea
+                      rows="3"
+                      value={websiteContent.companyProfile.description}
+                      onChange={(e) => handleContentChange('companyProfile', 'description', e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Visi</label>
+                    <textarea
+                      rows="2"
+                      value={websiteContent.companyProfile.vision}
+                      onChange={(e) => handleContentChange('companyProfile', 'vision', e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="content-section">
+                  <div className="section-header">
+                    <h3>Keunggulan Platform</h3>
+                    <button className="add-btn" onClick={addAdvantage}>
+                      + Tambah Keunggulan
+                    </button>
+                  </div>
+                  {websiteContent.advantages.map((advantage, index) => (
+                    <div key={index} className="advantage-item">
+                      <div className="form-grid">
+                        <div className="form-group">
+                          <label>Judul</label>
+                          <input
+                            type="text"
+                            value={advantage.title}
+                            onChange={(e) => handleAdvantageChange(index, 'title', e.target.value)}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label>Deskripsi</label>
+                          <textarea
+                            rows="2"
+                            value={advantage.description}
+                            onChange={(e) => handleAdvantageChange(index, 'description', e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <button 
+                        className="remove-btn"
+                        onClick={() => removeAdvantage(index)}
+                      >
+                        Hapus
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </section>
           )}
 
@@ -275,17 +455,6 @@ const AdminDashboard = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-            </section>
-          )}
-
-          {/* Orders Tab */}
-          {activeTab === 'orders' && (
-            <section className="dashboard-section">
-              <h2>Kelola Pesanan</h2>
-              <div className="empty-state">
-                <p>Fitur kelola pesanan akan segera hadir</p>
-                <span>Saat ini semua pesanan melalui WhatsApp</span>
               </div>
             </section>
           )}

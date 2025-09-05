@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FAQ from '../../components/FAQ/FAQ';
 import './Contact.css';
 
 const Contact = () => {
@@ -208,29 +209,7 @@ ${formData.message}`;
       </section>
 
       {/* FAQ Section */}
-      <section className="faq-section">
-        <div className="faq-container">
-          <h2>Frequently Asked Questions</h2>
-          <div className="faq-grid">
-            <div className="faq-item">
-              <h3>Bagaimana cara memesan produk?</h3>
-              <p>Anda bisa memesan melalui website kami atau langsung menghubungi WhatsApp untuk konsultasi dan pemesanan.</p>
-            </div>
-            <div className="faq-item">
-              <h3>Apakah ada garansi untuk produk?</h3>
-              <p>Ya, semua produk Stride memiliki garansi 6 bulan untuk cacat produksi dan 30 hari untuk ketidakpuasan.</p>
-            </div>
-            <div className="faq-item">
-              <h3>Berapa lama waktu pengiriman?</h3>
-              <p>Untuk area Jabodetabek 1-2 hari kerja, luar Jabodetabek 3-5 hari kerja tergantung lokasi.</p>
-            </div>
-            <div className="faq-item">
-              <h3>Apakah bisa tukar ukuran?</h3>
-              <p>Bisa, Anda dapat menukar ukuran dalam 7 hari setelah pembelian dengan kondisi sepatu masih baru.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FAQ />
     </div>
   );
 };

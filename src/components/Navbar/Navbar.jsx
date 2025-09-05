@@ -21,6 +21,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logout();
+      setIsMobileMenuOpen(false);
     } catch (error) {
       console.error('Error logging out:', error);
     }
@@ -28,10 +29,14 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
+        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
           <img src="https://res.cloudinary.com/dkzklcr1a/image/upload/v1756973096/Untitled_design_3_j9f3tv.png" alt="Stride Logo" />
           <span>Stride</span>
         </Link>
@@ -40,30 +45,37 @@ const Navbar = () => {
           <Link 
             to="/" 
             className={`navbar-link ${isActive('/') ? 'active' : ''}`}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={closeMobileMenu}
           >
-            Home
+            Beranda
           </Link>
           <Link 
             to="/about" 
             className={`navbar-link ${isActive('/about') ? 'active' : ''}`}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={closeMobileMenu}
           >
-            About Us
+            Tentang Kami
           </Link>
           <Link 
             to="/products" 
             className={`navbar-link ${isActive('/products') ? 'active' : ''}`}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={closeMobileMenu}
           >
-            Products
+            Produk
+          </Link>
+          <Link 
+            to="/digitalization" 
+            className={`navbar-link ${isActive('/digitalization') ? 'active' : ''}`}
+            onClick={closeMobileMenu}
+          >
+            Digitalisasi
           </Link>
           <Link 
             to="/contact" 
             className={`navbar-link ${isActive('/contact') ? 'active' : ''}`}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={closeMobileMenu}
           >
-            Contact
+            Kontak
           </Link>
           
           {currentUser ? (
@@ -71,7 +83,7 @@ const Navbar = () => {
               <Link 
                 to={userRole === 'admin' ? '/admin' : '/dashboard'} 
                 className="navbar-link"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={closeMobileMenu}
               >
                 Dashboard
               </Link>
@@ -83,16 +95,17 @@ const Navbar = () => {
             <Link 
               to="/login" 
               className="navbar-login"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
-              Login
+              Masuk
             </Link>
           )}
         </div>
 
         <button 
-          className="navbar-toggle"
+          className={`navbar-toggle ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
           <span></span>
           <span></span>
